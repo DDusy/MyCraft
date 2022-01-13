@@ -13,5 +13,6 @@ UCLASS()
 class MYCRAFT_API AMyCraftGameModeBase : public AGameModeBase
 {
 	GENERATED_BODY()
-	
+
+		AMyCraftGameModeBase();
 };
