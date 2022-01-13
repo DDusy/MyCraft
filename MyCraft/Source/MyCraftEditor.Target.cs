@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 public class MyCraftEditorTarget : TargetRules
 {
-	public MyCraftEditorTarget(TargetInfo Target) : base(Target)
+	public MyCraftEditorTarget( TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Editor;
 		DefaultBuildSettings = BuildSettingsVersion.V2;
-		ExtraModuleNames.Add("MyCraft");
+		ExtraModuleNames.AddRange( new string[] { "MyCraft" } );
 	}
 }
