@@ -27,8 +27,8 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
-	void UpDown(float _value);
-	void LeftRight(float _value);
+	/*void UpDown(float _value);
+	void LeftRight(float _value);*/
 
 private:
 	

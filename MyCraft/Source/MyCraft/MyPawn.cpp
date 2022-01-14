@@ -15,7 +15,7 @@ AMyPawn::AMyPawn()
 	pMoveMent = CreateDefaultSubobject<UFloatingPawnMovement>(TEXT("MOVEMENT"));
 
 	RootComponent = pMesh;
-	static ConstructorHelpers::FObjectFinder<UStaticMesh> SM(TEXT("Static Mesh"));
+	static ConstructorHelpers::FObjectFinder<UStaticMesh> SM(TEXT("StaticMesh'/Game/StarterContent/Shapes/Shape_QuadPyramid.Shape_QuadPyramid'"));
 
 	if (SM.Succeeded())
 	{
@@ -43,18 +43,18 @@ void AMyPawn::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
 	//함수 포인터 처럼
-	PlayerInputComponent->BindAxis(TEXT("UpDown"), this, &AMyPawn::UpDown);
-	PlayerInputComponent->BindAxis(TEXT("LeftRight"), this, &AMyPawn::LeftRight);
+	//PlayerInputComponent->BindAxis(TEXT("UpDown"), this, &AMyPawn::UpDown);
+	//PlayerInputComponent->BindAxis(TEXT("LeftRight"), this, &AMyPawn::LeftRight);
 
 }
-
-void AMyPawn::UpDown(float _value)
-{
-	AddMovementInput(GetActorForwardVector(), _value);
-}
-
-void AMyPawn::LeftRight(float _value)
-{
-	AddMovementInput(GetActorRightVector(), _value);
-}
+//
+//void AMyPawn::UpDown(float _value)
+//{
+//	AddMovementInput(GetActorForwardVector(), _value);
+//}
+//
+//void AMyPawn::LeftRight(float _value)
+//{
+//	AddMovementInput(GetActorRightVector(), _value);
+//}
 

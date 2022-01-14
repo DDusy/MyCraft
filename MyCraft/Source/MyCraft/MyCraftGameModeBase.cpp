@@ -3,11 +3,11 @@
 
 #include "MyCraftGameModeBase.h"
 
-#include "MyPawn.h"
+#include "MyCharacter.h"
 
 AMyCraftGameModeBase::AMyCraftGameModeBase()
 {
 
-	DefaultPawnClass = AMyPawn::StaticClass();
+	DefaultPawnClass = AMyCharacter::StaticClass();
 
 }
