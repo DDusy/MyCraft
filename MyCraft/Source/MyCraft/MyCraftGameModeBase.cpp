@@ -7,7 +7,12 @@
 
 AMyCraftGameModeBase::AMyCraftGameModeBase()
 {
+	static ConstructorHelpers::FClassFinder<ACharacter> BP_Char(TEXT("Blueprint'/Game/Blueprints/BP_OriginCharacter.BP_OriginCharacter_C'"));
 
-	DefaultPawnClass = AMyCharacter::StaticClass();
-
+	if (BP_Char.Succeeded())
+	{
+		DefaultPawnClass = BP_Char.Class;
+	}else
+		DefaultPawnClass = AMyCharacter::StaticClass();
 }
+
