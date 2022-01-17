@@ -2,6 +2,9 @@
 
 
 #include "MyAnimInstance.h"
+#include "GameFrameWork/Character.h"
+#include "GameFrameWork/PawnMovementComponent.h"
+
 
 void UMyAnimInstance::NativeUpdateAnimation(float Deltaseconds)
 {
@@ -13,4 +16,11 @@ void UMyAnimInstance::NativeUpdateAnimation(float Deltaseconds)
 	{
 		Speed = pawn->GetVelocity().Size(); 
 	}
+
+	auto Character = Cast<ACharacter>(pawn);
+	if (Character)
+	{
+		isFalling = Character->GetMovementComponent()->IsFalling();
+	}
+
 }
