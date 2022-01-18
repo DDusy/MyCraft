@@ -3,6 +3,8 @@
 
 #include "MyCharacter.h"
 #include "GameFramework/SpringArmComponent.h"
+//#include "GameFrameWork/PawnMovementComponent.h"
+
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 
@@ -61,6 +63,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 
 void AMyCharacter::UpDown(float _value)
 {
+	//if (this->GetMovementComponent()->IsFalling()) return;
+
 	AddMovementInput(GetActorForwardVector(), _value);
 }
 
