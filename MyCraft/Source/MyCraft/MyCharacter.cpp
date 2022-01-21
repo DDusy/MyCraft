@@ -8,6 +8,8 @@
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 
+#include "MyAnimInstance.h"
+
 // Sets default values
 AMyCharacter::AMyCharacter()
 {
@@ -38,6 +40,9 @@ AMyCharacter::AMyCharacter()
 void AMyCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	 AnimInstance =Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
+	 AnimInstance->OnMontageEnded.AddDynamic(this, &AMyCharacter::OnAttackMontageEnded);
 	
 }
 
@@ -54,6 +59,8 @@ void AMyCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 	
 	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed,this, &AMyCharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Attack"), EInputEvent::IE_Pressed, this, &AMyCharacter::Attack);
+
 
 	PlayerInputComponent->BindAxis(TEXT("UpDown"), this, &AMyCharacter::UpDown);
 	PlayerInputComponent->BindAxis(TEXT("LeftRight"), this, &AMyCharacter::LeftRight);
@@ -76,4 +83,22 @@ void AMyCharacter::LeftRight(float _value)
 void AMyCharacter::Yaw(float _value)
 {
 	AddControllerYawInput(_value);
+}
+
+void AMyCharacter::Attack()
+{
+	if(IsAttacking)
+		return;
+
+	auto Animinstance = Cast<UMyAnimInstance>(GetMesh()->GetAnimInstance());
+
+
+	Animinstance->PlayAttackMontage();
+	
+	IsAttacking = true;
+}
+
+void AMyCharacter::OnAttackMontageEnded(UAnimMontage* Montage, bool binterrupted)
+{
+	IsAttacking = false;
 }

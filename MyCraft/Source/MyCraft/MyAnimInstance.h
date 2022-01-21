@@ -14,8 +14,14 @@ class MYCRAFT_API UMyAnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
 
-		virtual void NativeUpdateAnimation(float Deltaseconds) override;
-	
+
+public:
+	UMyAnimInstance();
+
+	virtual void NativeUpdateAnimation(float Deltaseconds) override;
+
+
+	void PlayAttackMontage();
 private:
 
 	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category=Pawn,Meta=(AllowPrivateAccess=true))
@@ -27,5 +33,7 @@ private:
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
 	//bool isJumping;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Pawn, Meta = (AllowPrivateAccess = true))
+	UAnimMontage* AttackMontage;
 
 };
