@@ -1,0 +1,13 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "{0AE9D53D-4427-BC96-EF13-DF97CA3616D5}",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Crafts",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
